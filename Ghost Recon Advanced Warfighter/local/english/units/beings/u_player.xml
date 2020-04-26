@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<units>
+	<xi:include href="../macro_husk.xml#xpointer(/xml/*)"/>
+
+	<unit type="being" name="ghost_player" slot="2">
+		<model file="/beings/ghost_lead/ghost_lead.xml"/>
+		<network sync="client" remote_unit="ghost_player_husk" sync_rotation="false">
+			<sync_statsblock name="husk_data" />
+			<sync_statsblock name="huskinv_data" />
+		</network>
+		<mover name="stand" size="100 100 170" push_force="0.05"/>
+		<mover name="stand_mesh" type="mesh" size="100 100 170" push_force="0.05" mass="0"/>
+		<mover name="crouch" size="100 100 60" push_force="0.05"/>
+		<mover name="prone" size="100 100 40" push_force="0.05"/>
+		<mover name="freefall" size="200 200 200" push_force="0.05"/>
+		<mover name="die" size="220 220 160" push_force="0.05"/>
+		<mover name="carry" size="500 500 160" push_force="0.05"/>
+
+		<anim_state_machine name="ghost_machine"/>
+		
+		<script_class name="camera" class="Camera"/>
+		<script_class name="aim" class="Aim"/>
+		<script_class name="damage" class="HumanDamage"/>
+		<script_class name="inventory" class="Inventory"/>
+		<script_class name="hud" class="Hud"/>
+		<script_class name="com" class="PlayerCom"/>
+		<script_class name="talk" class="HumanTalk"/>
+		<script_class name="debug" class="PlayerDebug"/>
+		<script_class name="environment_sound" class="EnvironmentSound"/>
+		<script_class name="props_damage" class="DamageSystem"/>
+		
+		<script_class name="base" class="Human"/>
+		
+		<stats block="ai_data"/>
+		<stats block="ghost_ai_data">
+			<var name="team_leader" value="true"/>
+		</stats>
+		<stats block="base_data"/>
+		<stats block="damage_data">
+			<var name="god_mode" value="true"/>
+			<var name="damage_points" value="7"/>
+			<var name="clamp_at_save" value="true"/>
+		</stats>
+		<stats block="human_data">
+			<var name="player_controlled" value="true"/>
+			<var name="default_controller" value="player"/>
+			<!--<var name="default_mod" value="Skydive"/>-->
+			<var name="default_mod" value="OnFoot"/>
+			
+			<var name="precision_bonus_mul" value="1.0"/>
+			<var name="cue_name" value="mit_"/>
+			<var name="cue_mode" value="_dom_2d"/>
+			<var name="is_teammate" value="true"/>
+		</stats>
+		<stats block="player_data"/>
+		<stats block="inventory_data"/>
+		<stats block="com_data"/>
+		<stats block="husk_data"/>
+		<stats block="huskinv_data"/>
+		<stats block="order_data"/>
+		<stats block="mod_data"/>
+		
+		<sounds>
+			<soundbank name="mitchell_sound"/>
+ 			<soundbank name="foley_sound_player"/>
+ 			<soundbank name="breathing_sound"/>
+ 			<soundbank name="0460bullet_sound"/>
+ 			<soundbank name="0556bullet_sound"/>
+ 			<soundbank name="0762bullet_sound"/>
+ 			<soundbank name="0900bullet_sound"/>
+ 			<soundbank name="1270bullet_sound"/>
+ 			<soundbank name="hudandmenu_sound"/>
+ 			<soundbank name="skydive_sound"/>
+ 			<!--<soundbank name="ambience_sound"/>-->
+			<default_soundsource source="sound"/>
+		</sounds>
+	</unit>
+	<unit type="being" name="ghost_player_husk" slot="2">
+		<model file="/beings/ghost_lead/ghost_lead.xml"/>
+		@human_husk_macro(2)
+
+		<stats block="human_data"> 
+				<var name="is_teammate" value="true"/>
+		</stats>
+		<sounds>
+ 			<soundbank name="foley_sound"/>
+ 			<soundbank name="0460bullet_sound"/>
+ 			<soundbank name="0556bullet_sound"/>
+ 			<soundbank name="0762bullet_sound"/>
+ 			<soundbank name="0900bullet_sound"/>
+ 			<soundbank name="1270bullet_sound"/>
+			<default_soundsource source="sound"/>
+		</sounds>
+	</unit>
+
+	<!-- TEMP FOR MULTIPLAYER -->
+	<unit type="being" name="ghost_red" slot="5">
+		<model file="/beings/ghost_lead/ghost_lead.xml"/>
+		<network sync="client" remote_unit="ghost_red_husk" sync_rotation="false">
+			<sync_statsblock name="husk_data" />
+			<sync_statsblock name="huskinv_data" />
+		</network>
+		<mover name="stand" size="100 100 160" push_force="0.05"/>
+		<mover name="stand_mesh" type="mesh" size="135 135 160" push_force="0.05" mass="0"/>
+		<mover name="crouch" size="100 100 60" push_force="0.05"/>
+		<mover name="prone" size="100 100 40" push_force="0.05"/>
+		<mover name="die" size="220 220 160" push_force="0.05"/>
+		
+		<anim_state_machine name="ghost_machine"/> 
+		
+		<script_class name="camera" class="Camera"/>
+		<script_class name="aim" class="Aim"/>
+		<script_class name="damage" class="HumanDamage"/>
+		<script_class name="inventory" class="Inventory"/>
+		<script_class name="hud" class="Hud"/>
+		<script_class name="com" class="PlayerCom"/>
+		<script_class name="talk" class="HumanTalk"/>
+		<script_class name="debug" class="PlayerDebug"/>
+		<script_class name="props_damage" class="DamageSystem"/>
+		
+		<script_class name="base" class="Human"/>
+		
+		<stats block="ai_data"/>
+		<stats block="ghost_ai_data">
+			<var name="team_leader" value="true"/>
+		</stats>
+		<stats block="base_data"/>
+		<stats block="damage_data">
+			<var name="god_mode" value="true"/>
+			<var name="damage_points" value="8"/>
+		</stats>
+		<stats block="human_data">
+			<var name="player_controlled" value="true"/>
+			<var name="default_controller" value="player"/>
+		</stats>
+		<stats block="player_data"/>
+		<stats block="inventory_data"/>
+		<stats block="com_data"/>
+		<stats block="husk_data"/>
+		<stats block="huskinv_data"/>
+		<stats block="order_data"/>
+		<stats block="mod_data"/>
+		
+		<sounds>
+ 			<soundbank name="foley_sound"/>
+ 			<soundbank name="hudandmenu_sound"/>
+			<default_soundsource source="sound"/>
+		</sounds>
+	</unit>
+	<unit type="being" name="ghost_red_husk" slot="5"> <!-- in USA slot for now -->
+		<model file="/beings/ghost_lead/ghost_lead.xml"/>
+		@human_husk_macro(2)
+		<stats block="human_data"> 
+			<var name="player_controlled" value="false"/>
+		</stats>
+		<sounds>
+ 			<soundbank name="foley_sound"/>
+ 			<soundbank name="0460bullet_sound"/>
+ 			<soundbank name="0556bullet_sound"/>
+ 			<soundbank name="0762bullet_sound"/>
+ 			<soundbank name="0900bullet_sound"/>
+ 			<soundbank name="1270bullet_sound"/>
+			<default_soundsource source="sound"/>
+		</sounds>
+	</unit>
+
+	<unit type="being" name="ghost_green" slot="2">
+		<model file="/beings/ghost_lead/ghost_lead.xml"/>
+		<network sync="client" remote_unit="ghost_green_husk" sync_rotation="false">
+			<sync_statsblock name="husk_data" />
+			<sync_statsblock name="huskinv_data" />
+		</network>
+		<mover name="stand" size="100 100 160" push_force="0.05"/>
+		<mover name="stand_mesh" type="mesh" size="135 135 160" push_force="0.05" mass="0"/>
+		<mover name="crouch" size="100 100 60" push_force="0.05"/>
+		<mover name="prone" size="100 100 40" push_force="0.05"/>
+		<mover name="die" size="220 220 160" push_force="0.05"/>
+		<anim_state_machine name="ghost_machine"/> 
+		
+		<script_class name="camera" class="Camera"/>
+		<script_class name="aim" class="Aim"/>
+		<script_class name="damage" class="HumanDamage"/>
+		<script_class name="inventory" class="Inventory"/>
+		<script_class name="hud" class="Hud"/>
+		<script_class name="com" class="PlayerCom"/>
+		<script_class name="talk" class="HumanTalk"/>
+		<script_class name="debug" class="PlayerDebug"/>
+		<script_class name="props_damage" class="DamageSystem"/>
+		
+		<script_class name="base" class="Human"/>
+		
+		<stats block="ai_data"/>
+		<stats block="ghost_ai_data">
+			<var name="team_leader" value="true"/>
+		</stats>
+		<stats block="base_data"/>
+		<stats block="damage_data">
+			<var name="god_mode" value="true"/>
+			<var name="damage_points" value="8"/>
+		</stats>
+		<stats block="human_data">
+			<var name="player_controlled" value="true"/>
+			<var name="default_controller" value="player"/>
+		</stats>
+		<stats block="player_data"/>
+		<stats block="inventory_data"/>
+		<stats block="com_data"/>
+		<stats block="husk_data"/>
+		<stats block="huskinv_data"/>
+		<stats block="order_data"/>
+		<stats block="mod_data"/>
+		
+		<sounds>
+ 			<soundbank name="foley_sound"/>
+ 			<soundbank name="hudandmenu_sound"/>
+			<default_soundsource source="sound"/>
+		</sounds>
+	</unit>
+	<unit type="being" name="ghost_green_husk" slot="5"> <!-- in USA slot for now -->
+		<model file="/beings/ghost_lead/ghost_lead.xml"/>
+		@human_husk_macro(2)
+		<stats block="human_data"> 
+			<var name="player_controlled" value="false"/>
+		</stats>
+		<sounds>
+ 			<soundbank name="foley_sound"/>
+ 			<soundbank name="0460bullet_sound"/>
+ 			<soundbank name="0556bullet_sound"/>
+ 			<soundbank name="0762bullet_sound"/>
+ 			<soundbank name="0900bullet_sound"/>
+ 			<soundbank name="1270bullet_sound"/>
+			<default_soundsource source="sound"/>
+		</sounds>
+	</unit>
+</units>
