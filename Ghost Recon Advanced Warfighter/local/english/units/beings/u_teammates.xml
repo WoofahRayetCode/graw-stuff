@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!--
+teammate_beasley
+teammate_brown
+teammate_kirkland
+teammate_allen
+
+life should be 16...not 24...just for demo purposes M13
+
+-->
+
+<units>
+	<xi:include href="../macro_husk.xml#xpointer(/xml/*)"/>
+
+	<!-- BEASLEY -->
+	<unit type="being" name="teammate_beasley" slot="5">
+		<model file="/beings/ghost_lead/ghost_lead.xml"/>
+		<network sync="client" remote_unit="teammate_beasley_husk" sync_rotation="false">
+			<sync_statsblock name="husk_data"/>
+			<sync_statsblock name="huskinv_data"/>
+		</network>
+		
+		<mover name="stand" size="90 90 160" push_force="0.05"/>
+		<!--<mover name="stand_mesh" type="mesh" size="135 135 160" push_force="0.05"/>-->
+		<mover name="stand_mesh" type="mesh" size="100 100 160" push_force="0.05" mass="0"/>
+		<mover name="crouch" size="60 60 60" push_force="0.05"/>
+		<mover name="prone" size="100 100 40" push_force="0.05"/>
+		<mover name="die" size="220 220 160" push_force="0.05"/>
+		<anim_state_machine name="ghost_machine"/> 
+		
+		<script_class name="base" class="Human"/>
+		<script_class name="com" class="AICom"/>
+		<script_class name="damage" class="HumanDamage"/>
+		<script_class name="inventory" class="Inventory"/>
+		<script_class name="ai" class="SoldierAi"/>
+		<script_class name="talk" class="HumanTalk"/>
+		<script_class name="props_damage" class="DamageSystem"/>
+		
+		<stats block="ai_data"/>
+		<stats block="ghost_ai_data">
+			<var name="new_ai" value="true"/>
+			<var name="enemy_slot" value="2"/>
+			<var name="brain_name" value="soldier_brain"/>
+			<var name="braingroup_name" value="player_team"/>
+			<var name="ga_enemies_slot" value="2"/> <!-- new one -->
+			<var name="ga_enemy_vehicles_slot" value="25"/>
+			
+			<var name="skill_shooting" value="1"/>
+			<var name="cnp_allowed_paths_at_the_same_time" value="3"/>
+			<var name="cnp_allowed_steps_on_one_update" value="5"/>
+			
+			<var name="ga_modify_detect_max" value="1.4"/>
+			<var name="ga_modify_detect_min" value="1.2"/>
+			<var name="ga_modify_detect_diff" value="0.2"/>
+		</stats>
+		<stats block="base_data">
+			<var name="orders_available" value="true"/>
+			<var name="xcom_available" value="true"/>
+			<var name="localize_id" value="ghost_05"/>			
+		</stats>
+		<stats block="human_data">
+			<var name="cue_name" value="bea_"/>
+			<var name="precision_bonus_mul" value="2.5"/>
+			<var name="is_teammate" value="true"/>
+		</stats>
+		<stats block="order_data"/>
+		<stats block="inventory_data"/>
+		<stats block="damage_data">
+			<var name="damage_points" value="24"/>
+			<var name="god_mode" value="true"/>
+			<var name="clamp_at_save" value="true"/>
+		</stats>
+		<stats block="mod_data"/>
+		<stats block="husk_data"/>
+		<stats block="huskinv_data"/>
+		
+		<sounds>
+ 			<soundbank name="foley_sound"/>
+ 			<soundbank name="vox_beasley_sound"/>
+			<default_soundsource source="sound"/>
+		</sounds>
+	</unit>
+	<unit type="being" name="teammate_beasley_husk" slot="2">
+		<model file="/beings/ghost_lead/ghost_lead.xml"/>
+		@human_husk_macro(2)
+
+		<stats block="human_data">
+			<var name="cue_name" value="bea_"/>
+			<var name="precision_bonus_mul" value="2.5"/>
+			<var name="is_teammate" value="true"/>			
+		</stats>
+		<sounds>
+ 			<soundbank name="foley_sound"/>
+ 			<soundbank name="vox_beasley_sound"/>
+			<default_soundsource source="sound"/>
+		</sounds>
+	</unit>
+
+	<!-- BROWN -->
+	<unit type="being" name="teammate_brown" slot="2">
+		<model file="/beings/ghost_brown/ghost_brown.xml"/>
+		<network sync="client" remote_unit="teammate_brown_husk" sync_rotation="false">
+			<sync_statsblock name="husk_data"/>
+			<sync_statsblock name="huskinv_data"/>
+		</network>
+		
+		<mover name="stand" size="90 90 160" push_force="0.05"/>
+		<!--<mover name="stand_mesh" type="mesh" size="135 135 160" push_force="0.05"/>-->
+		<mover name="stand_mesh" type="mesh" size="100 100 160" push_force="0.05" mass="0"/>
+		<mover name="crouch" size="60 60 60" push_force="0.05"/>
+		<mover name="prone" size="100 100 40" push_force="0.05"/>
+		<mover name="die" size="220 220 160" push_force="0.05"/>
+		
+		<anim_state_machine name="ghost_machine"/> 
+		
+		<script_class name="base" class="Human"/>
+		<script_class name="com" class="AICom"/>
+		<script_class name="damage" class="HumanDamage"/>
+		<script_class name="inventory" class="Inventory"/>
+		
+		<!-- <script_class name="ai" class="GhostAi"/> -->
+		
+		<script_class name="ai" class="SoldierAi"/>
+		
+		<script_class name="talk" class="HumanTalk"/>
+		
+		<script_class name="props_damage" class="DamageSystem"/>
+		
+		<stats block="ai_data"/>
+		<stats block="ghost_ai_data">
+			<var name="new_ai" value="true"/>
+			<var name="enemy_slot" value="5"/>
+			<var name="brain_name" value="soldier_brain"/>
+			<var name="braingroup_name" value="player_team"/>
+			<var name="ga_enemies_slot" value="5"/> <!-- new one -->
+			<var name="ga_enemy_vehicles_slot" value="25"/>
+					
+			<var name="skill_shooting" value="1"/>
+			<var name="cnp_allowed_paths_at_the_same_time" value="3"/>
+			<var name="cnp_allowed_steps_on_one_update" value="5"/>
+			
+			<var name="cover_analyzer_max_steps" value="10"/>
+			
+			<var name="ga_modify_detect_max" value="1.4"/>
+			<var name="ga_modify_detect_min" value="1.2"/>
+			<var name="ga_modify_detect_diff" value="0.2"/>
+			<var name="try_to_avoid" value="true" />
+			<var name="detect_sight_multiplier" value="1.2"/>		
+		</stats>
+		
+		<stats block="base_data">
+			<var name="orders_available" value="true"/>
+			<var name="xcom_available" value="true"/>
+			<var name="localize_id" value="ghost_01"/>	
+		</stats>
+		<stats block="human_data">
+			<var name="cue_name" value="bro_"/>
+			<var name="precision_bonus_mul" value="2.5"/>
+			<var name="mod_start_anim" value="brown_base_idle"/>
+			<var name="mod_end_anim" value="brown_wave_"/>
+			<var name="mod_player_dependant_exit" value="true"/>		
+			<var name="is_teammate" value="true"/>
+		</stats>
+		<stats block="order_data"/>
+		<stats block="inventory_data"/>
+		<stats block="damage_data">
+			<var name="damage_points" value="24"/>
+			<var name="god_mode" value="true"/>
+			<var name="clamp_at_save" value="true"/>
+		</stats>
+		<stats block="mod_data"/>
+		<stats block="husk_data"/>
+		<stats block="huskinv_data"/>
+		
+		<sounds>
+ 			<soundbank name="foley_sound"/>
+ 			<soundbank name="vox_brown_sound"/>
+			<default_soundsource source="sound"/>
+		</sounds>
+	</unit>
+	<unit type="being" name="teammate_brown_player" slot="2">
+		<model file="/beings/ghost_brown/ghost_brown.xml"/>
+		<network sync="client" remote_unit="teammate_brown_husk" sync_rotation="false">
+			<sync_statsblock name="husk_data" />
+			<sync_statsblock name="huskinv_data" />
+		</network>
+		<mover name="stand" size="100 100 170" push_force="0.05"/>
+		<mover name="stand_mesh" type="mesh" size="100 100 170" push_force="0.05" mass="0"/>
+		<mover name="crouch" size="100 100 60" push_force="0.05"/>
+		<mover name="prone" size="100 100 40" push_force="0.05"/>
+		<mover name="freefall" size="200 200 200" push_force="0.05"/>
+		<mover name="die" size="220 220 160" push_force="0.05"/>
+		<mover name="carry" size="500 500 160" push_force="0.05"/>
+
+		<anim_state_machine name="ghost_machine"/>
+		
+		<script_class name="camera" class="Camera"/>
+		<script_class name="aim" class="Aim"/>
+		<script_class name="damage" class="HumanDamage"/>
+		<script_class name="inventory" class="Inventory"/>
+		<script_class name="hud" class="Hud"/>
+		<script_class name="chat" class="HudMPChat"/>
+		<script_class name="com" class="PlayerCom"/>
+		<script_class name="talk" class="HumanTalk"/>
+		<script_class name="debug" class="PlayerDebug"/>
+		<script_class name="environment_sound" class="EnvironmentSound"/>
+		<script_class name="props_damage" class="DamageSystem"/>
+				
+		<script_class name="base" class="Human"/>
+		
+		<stats block="ai_data"/>
+		<stats block="ghost_ai_data">
+			<var name="team_leader" value="true"/>
+		</stats>
+		<stats block="base_data"/>
+		<stats block="damage_data">
+			<var name="god_mode" value="true"/>
+			<var name="damage_points" value="7"/>
+			<var name="clamp_at_save" value="true"/>
+		</stats>
+		<stats block="human_data">
+			<var name="player_controlled" value="true"/>
+			<var name="default_controller" value="player"/>
+			<var name="default_mod" value="OnFoot"/>
+			<var name="precision_bonus_mul" value="2.5"/>
+			<var name="hud_visible" value="false" />
+		</stats>
+		<stats block="player_data"/>
+		<stats block="inventory_data"/>
+		<stats block="com_data"/>
+		<stats block="husk_data"/>
+		<stats block="huskinv_data"/>
+		<stats block="order_data"/>
+		<stats block="mod_data"/>
+		
+		<sounds>
+ 			<soundbank name="foley_sound_player"/>
+ 			<soundbank name="breathing_sound"/>
+ 			<soundbank name="vox_brown_sound"/>
+ 			<soundbank name="0460bullet_sound"/>
+ 			<soundbank name="0556bullet_sound"/>
+ 			<soundbank name="0762bullet_sound"/>
+ 			<soundbank name="0900bullet_sound"/>
+ 			<soundbank name="1270bullet_sound"/>
+ 			<soundbank name="hudandmenu_sound"/>
+			<default_soundsource source="sound"/>
+		</sounds>
+	</unit>
+	<unit type="being" name="teammate_brown_husk" slot="2">
+		<model file="/beings/ghost_brown/ghost_brown.xml"/>
+		@player_husk_macro( 2, 7 )
+		<mover name="carry" size="500 500 160" push_force="0.05"/>
+
+		<stats block="human_data">
+			<var name="cue_name" value="bro_"/>
+			<var name="precision_bonus_mul" value="2.5"/>
+			<var name="is_teammate" value="true"/>
+		</stats>
+		<sounds>
+ 			<soundbank name="foley_sound"/>
+ 			<soundbank name="vox_brown_sound"/>
+			<default_soundsource source="sound"/>
+		</sounds>
+	</unit>
+
+
+	<!-- KIRKLAND -->
+	<unit type="being" name="teammate_kirkland" slot="2">
+		<model file="/beings/ghost_kirkland/ghost_kirkland.xml"/>
+		<network sync="bodies" remote_unit="teammate_kirkland_husk" sync_rotation="false">
+			<sync_statsblock name="husk_data"/>
+			<sync_statsblock name="huskinv_data"/>
+		</network>
+		 
+		<mover name="stand" size="90 90 160" push_force="0.05"/>
+		<!--<mover name="stand_mesh" type="mesh" size="135 135 160" push_force="0.05"/>-->
+		<mover name="stand_mesh" type="mesh" size="100 100 160" push_force="0.05" mass="0"/>
+		<mover name="crouch" size="60 60 60" push_force="0.05"/>
+		<mover name="prone" size="100 100 40" push_force="0.05"/>
+		<mover name="die" size="220 220 160" push_force="0.05"/>
+		<anim_state_machine name="ghost_machine"/> 
+		
+		<script_class name="base" class="Human"/>
+		<script_class name="com" class="AICom"/>
+		<script_class name="damage" class="HumanDamage"/>
+		<script_class name="inventory" class="Inventory"/>
+		
+		<script_class name="ai" class="SoldierAi"/>
+		
+		<script_class name="talk" class="HumanTalk"/>
+		
+		<script_class name="props_damage" class="DamageSystem"/>
+		
+		<stats block="ai_data"/>
+		<stats block="ghost_ai_data">
+			<var name="new_ai" value="true"/>
+			<var name="enemy_slot" value="5"/>
+			<var name="brain_name" value="soldier_brain"/>
+			<var name="braingroup_name" value="player_team"/>
+			<var name="ga_enemies_slot" value="5"/> <!-- new one -->
+			<var name="ga_enemy_vehicles_slot" value="25"/>
+			
+			<var name="skill_shooting" value="1"/>
+			<var name="cnp_allowed_paths_at_the_same_time" value="3"/>
+			<var name="cnp_allowed_steps_on_one_update" value="5"/>
+			<var name="cover_analyzer_max_steps" value="10"/>
+			
+			<var name="ga_modify_detect_max" value="1.4"/>
+			<var name="ga_modify_detect_min" value="1.2"/>
+			<var name="ga_modify_detect_diff" value="0.2"/>
+			<var name="try_to_avoid" value="true" />
+			<var name="detect_sight_multiplier" value="1.2"/>		
+		</stats>
+		<stats block="base_data">
+			<var name="orders_available" value="true"/>
+			<var name="xcom_available" value="true"/>
+			<var name="localize_id" value="ghost_02"/>	
+		</stats>
+		<stats block="human_data">
+			<var name="cue_name" value="kir_"/>
+			<var name="precision_bonus_mul" value="2.5"/>
+			<var name="mod_start_anim" value="kirkland_base_idle"/>
+			<var name="mod_end_anim" value="kirkland_wave_"/>
+			<var name="mod_player_dependant_exit" value="true"/>
+			<var name="mod_right_dot_limit" value="0.35"/>
+			<var name="is_teammate" value="true"/>
+		</stats>
+		<stats block="order_data"/>
+		<stats block="inventory_data"/>
+		<stats block="damage_data">
+			<var name="damage_points" value="24"/>
+			<var name="god_mode" value="true"/>
+			<var name="clamp_at_save" value="true"/>
+		</stats>
+		<stats block="mod_data"/>
+		<stats block="husk_data"/>
+		<stats block="huskinv_data"/>
+		
+		<sounds>
+ 			<soundbank name="foley_sound"/>
+ 			<soundbank name="vox_kirkland_sound"/>
+			<default_soundsource source="sound"/>
+		</sounds>
+	</unit>
+	<unit type="being" name="teammate_kirkland_player" slot="2">
+		<model file="/beings/ghost_kirkland/ghost_kirkland.xml"/>
+		<network sync="client" remote_unit="teammate_kirkland_husk" sync_rotation="false">
+			<sync_statsblock name="husk_data" />
+			<sync_statsblock name="huskinv_data" />
+		</network>
+		<mover name="stand" size="100 100 170" push_force="0.05"/>
+		<mover name="stand_mesh" type="mesh" size="100 100 170" push_force="0.05" mass="0"/>
+		<mover name="crouch" size="100 100 60" push_force="0.05"/>
+		<mover name="prone" size="100 100 40" push_force="0.05"/>
+		<mover name="freefall" size="200 200 200" push_force="0.05"/>
+		<mover name="die" size="220 220 160" push_force="0.05"/>
+		<mover name="carry" size="500 500 160" push_force="0.05"/>
+
+		<anim_state_machine name="ghost_machine"/>
+		
+		<script_class name="camera" class="Camera"/>
+		<script_class name="aim" class="Aim"/>
+		<script_class name="damage" class="HumanDamage"/>
+		<script_class name="inventory" class="Inventory"/>
+		<script_class name="hud" class="Hud"/>
+		<script_class name="chat" class="HudMPChat"/>
+		<script_class name="com" class="PlayerCom"/>
+		<script_class name="talk" class="HumanTalk"/>
+		<script_class name="debug" class="PlayerDebug"/>
+		<script_class name="environment_sound" class="EnvironmentSound"/>
+		<script_class name="props_damage" class="DamageSystem"/>
+				
+		<script_class name="base" class="Human"/>
+		
+		<stats block="ai_data"/>
+		<stats block="ghost_ai_data">
+			<var name="team_leader" value="true"/>
+		</stats>
+		<stats block="base_data"/>
+		<stats block="damage_data">
+			<var name="god_mode" value="true"/>
+			<var name="damage_points" value="7"/>
+			<var name="clamp_at_save" value="true"/>
+		</stats>
+		<stats block="human_data">
+			<var name="player_controlled" value="true"/>
+			<var name="default_controller" value="player"/>
+			<var name="default_mod" value="OnFoot"/>
+			<var name="precision_bonus_mul" value="2.5"/>
+			<var name="hud_visible" value="false" />
+		</stats>
+		<stats block="player_data"/>
+		<stats block="inventory_data"/>
+		<stats block="com_data"/>
+		<stats block="husk_data"/>
+		<stats block="huskinv_data"/>
+		<stats block="order_data"/>
+		<stats block="mod_data"/>
+		
+		<sounds>
+ 			<soundbank name="foley_sound_player"/>
+ 			<soundbank name="breathing_sound"/>
+ 			<soundbank name="vox_kirkland_sound"/>
+ 			<soundbank name="0460bullet_sound"/>
+ 			<soundbank name="0556bullet_sound"/>
+ 			<soundbank name="0762bullet_sound"/>
+ 			<soundbank name="0900bullet_sound"/>
+ 			<soundbank name="1270bullet_sound"/>
+ 			<soundbank name="hudandmenu_sound"/>
+			<default_soundsource source="sound"/>
+		</sounds>
+	</unit>
+	<unit type="being" name="teammate_kirkland_husk" slot="2">
+		<model file="/beings/ghost_kirkland/ghost_kirkland.xml"/>
+		@player_husk_macro( 2, 7 )
+		<mover name="carry" size="500 500 160" push_force="0.05"/>
+
+		<stats block="human_data">
+			<var name="cue_name" value="kir_"/>
+			<var name="precision_bonus_mul" value="2.5"/>
+			<var name="is_teammate" value="true"/>
+		</stats>
+		<sounds>
+ 			<soundbank name="foley_sound"/>
+ 			<soundbank name="vox_kirkland_sound"/>
+			<default_soundsource source="sound"/>
+		</sounds>
+	</unit>
+	
+	<!-- ALLEN -->
+	<unit type="being" name="teammate_allen" slot="2">
+		<model file="/beings/ghost_allen/ghost_allen.xml"/>
+		<network sync="bodies" remote_unit="teammate_allen_husk" sync_rotation="false">
+			<sync_statsblock name="husk_data"/>
+			<sync_statsblock name="huskinv_data"/>
+		</network>
+		
+		<mover name="stand" size="90 90 160" push_force="0.05"/>
+		<!--<mover name="stand_mesh" type="mesh" size="135 135 160" push_force="0.05"/>-->
+		<mover name="stand_mesh" type="mesh" size="100 100 160" push_force="0.05" mass="0"/>
+		<mover name="crouch" size="60 60 60" push_force="0.05"/>
+		<mover name="prone" size="100 100 40" push_force="0.05"/>
+		<mover name="die" size="220 220 160" push_force="0.05"/>
+		<anim_state_machine name="ghost_machine"/> 
+		
+		<script_class name="base" class="Human"/>
+		<script_class name="com" class="AICom"/>
+		<script_class name="damage" class="HumanDamage"/>
+		<script_class name="inventory" class="Inventory"/>
+		
+		<script_class name="ai" class="SoldierAi"/>
+		
+		<script_class name="talk" class="HumanTalk"/>
+		
+		<script_class name="props_damage" class="DamageSystem"/>
+		
+		<stats block="ai_data"/>
+		<stats block="ghost_ai_data">
+			<var name="new_ai" value="true"/>
+			<var name="enemy_slot" value="5"/>
+			<var name="brain_name" value="soldier_brain"/>
+			<var name="braingroup_name" value="player_team"/>
+			<var name="ga_enemies_slot" value="5"/> <!-- new one -->
+			<var name="ga_enemy_vehicles_slot" value="25"/>
+			
+			<var name="skill_shooting" value="1"/>
+			<var name="cnp_allowed_paths_at_the_same_time" value="3"/>
+			<var name="cnp_allowed_steps_on_one_update" value="5"/>
+			
+			<var name="cover_analyzer_max_steps" value="10"/>
+			
+			<var name="ga_modify_detect_max" value="1.4"/>
+			<var name="ga_modify_detect_min" value="1.2"/>
+			<var name="ga_modify_detect_diff" value="0.2"/>
+			<var name="try_to_avoid" value="true" />
+			<var name="detect_sight_multiplier" value="1.2"/>		
+		</stats>
+		<stats block="base_data">
+			<var name="orders_available" value="true"/>
+			<var name="xcom_available" value="true"/>
+			<var name="localize_id" value="ghost_03"/>	
+		</stats>
+		<stats block="human_data">
+			<var name="cue_name" value="all_"/>
+			<var name="precision_bonus_mul" value="2.5"/>
+			<var name="mod_start_anim" value="allen_base_idle"/>
+			<var name="mod_end_anim" value="allen_wave_"/>
+			<var name="mod_player_dependant_exit" value="true"/>
+			<var name="is_teammate" value="true"/>
+		</stats>
+		<stats block="order_data"/>
+		<stats block="inventory_data"/>
+		<stats block="damage_data">
+			<var name="damage_points" value="24"/>
+			<var name="god_mode" value="true"/>
+			<var name="clamp_at_save" value="true"/>
+		</stats>
+		<stats block="mod_data"/>
+		<stats block="husk_data"/>
+		<stats block="huskinv_data"/>
+		
+		<sounds>
+ 			<soundbank name="foley_sound"/>
+ 			<soundbank name="vox_allen_sound"/>
+			<default_soundsource source="sound"/>
+		</sounds>
+	</unit>
+	<unit type="being" name="teammate_allen_player" slot="2">
+		<model file="/beings/ghost_allen/ghost_allen.xml"/>
+		<network sync="client" remote_unit="teammate_allen_husk" sync_rotation="false">
+			<sync_statsblock name="husk_data" />
+			<sync_statsblock name="huskinv_data" />
+		</network>
+		<mover name="stand" size="100 100 170" push_force="0.05"/>
+		<mover name="stand_mesh" type="mesh" size="100 100 170" push_force="0.05" mass="0"/>
+		<mover name="crouch" size="100 100 60" push_force="0.05"/>
+		<mover name="prone" size="100 100 40" push_force="0.05"/>
+		<mover name="freefall" size="200 200 200" push_force="0.05"/>
+		<mover name="die" size="220 220 160" push_force="0.05"/>
+		<mover name="carry" size="500 500 160" push_force="0.05"/>
+
+		<anim_state_machine name="ghost_machine"/>
+		
+		<script_class name="camera" class="Camera"/>
+		<script_class name="aim" class="Aim"/>
+		<script_class name="damage" class="HumanDamage"/>
+		<script_class name="inventory" class="Inventory"/>
+		<script_class name="hud" class="Hud"/>
+		<script_class name="chat" class="HudMPChat"/>
+		<script_class name="com" class="PlayerCom"/>
+		<script_class name="talk" class="HumanTalk"/>
+		<script_class name="debug" class="PlayerDebug"/>
+		<script_class name="environment_sound" class="EnvironmentSound"/>
+		<script_class name="props_damage" class="DamageSystem"/>
+				
+		<script_class name="base" class="Human"/>
+		
+		<stats block="ai_data"/>
+		<stats block="ghost_ai_data">
+			<var name="team_leader" value="true"/>
+		</stats>
+		<stats block="base_data"/>
+		<stats block="damage_data">
+			<var name="god_mode" value="true"/>
+			<var name="damage_points" value="7"/>
+			<var name="clamp_at_save" value="true"/>
+		</stats>
+		<stats block="human_data">
+			<var name="player_controlled" value="true"/>
+			<var name="default_controller" value="player"/>
+			<var name="default_mod" value="OnFoot"/>
+			<var name="precision_bonus_mul" value="2.5"/>
+			<var name="hud_visible" value="false" />
+		</stats>
+		<stats block="player_data"/>
+		<stats block="inventory_data"/>
+		<stats block="com_data"/>
+		<stats block="husk_data"/>
+		<stats block="huskinv_data"/>
+		<stats block="order_data"/>
+		<stats block="mod_data"/>
+		
+		<sounds>
+ 			<soundbank name="foley_sound_player"/>
+ 			<soundbank name="breathing_sound"/>
+ 			<soundbank name="vox_allen_sound"/>
+ 			<soundbank name="0460bullet_sound"/>
+ 			<soundbank name="0556bullet_sound"/>
+ 			<soundbank name="0762bullet_sound"/>
+ 			<soundbank name="0900bullet_sound"/>
+ 			<soundbank name="1270bullet_sound"/>
+ 			<soundbank name="hudandmenu_sound"/>
+			<default_soundsource source="sound"/>
+		</sounds>
+	</unit>
+	<unit type="being" name="teammate_allen_husk" slot="2">
+		<model file="/beings/ghost_allen/ghost_allen.xml"/>
+		@player_husk_macro( 2, 7 )
+		<mover name="carry" size="500 500 160" push_force="0.05"/>
+
+		<stats block="human_data">
+			<var name="cue_name" value="all_"/>
+			<var name="precision_bonus_mul" value="2.5"/>
+			<var name="is_teammate" value="true"/>
+		</stats>
+		<sounds>
+ 			<soundbank name="foley_sound"/>
+ 			<soundbank name="vox_allen_sound"/>
+			<default_soundsource source="sound"/>
+		</sounds>
+	</unit>
+</units>
