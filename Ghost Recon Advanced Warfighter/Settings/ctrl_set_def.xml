@@ -1,0 +1,64 @@
+<controller_setting>
+	<buttons>
+		<button id="walk_forward" binding="w" device="keyboard" group="movement"/>
+		<button id="walk_backward" binding="s" device="keyboard" group="movement"/>
+		<button id="strafe_left" binding="a" device="keyboard" group="movement"/>
+		<button id="strafe_right" binding="d" device="keyboard" group="movement"/>
+
+		<button id="goto_prone" binding="left ctrl" device="keyboard" group="movement"/>
+		<button id="sprint" binding="left shift" device="keyboard" group="movement"/>
+
+		<button id="lean" binding="space" device="keyboard" group="movement"/>
+		<button id="lean_up" binding="v" device="keyboard" group="movement"/>
+		<button id="lean_down" binding="c" device="keyboard" group="movement"/>
+		<button id="lean_left" binding="q" device="keyboard" group="movement"/>
+		<button id="lean_right" binding="e" device="keyboard" group="movement"/>
+
+		<button id="action" binding="x" device="keyboard" group="misc"/>
+		<button id="reload" binding="r" device="keyboard" group="combat"/>
+		<button id="fire" binding="0" device="mouse" group="combat"/>
+		<button id="zoom" binding="1" device="mouse" group="combat"/>
+		<button id="switch_firemode" binding="z" device="keyboard" group="combat"/>
+		<button id="toggle_nightvision" binding="n" device="keyboard" group="combat"/>		
+		<button id="show_weapon_list" binding="f" device="keyboard" group="combat"/>
+		
+		<button id="select_primary" binding="" device="keyboard" group="combat"/>
+		<button id="select_secondary" binding="" device="keyboard" group="combat"/>
+		<button id="select_backpack" binding="" device="keyboard" group="combat"/>
+		<button id="select_grenadelauncher" binding="" device="keyboard" group="combat"/>
+		<button id="select_fraggrenade" binding="" device="keyboard" group="combat"/>
+		<button id="select_smokegrenade" binding="" device="keyboard" group="combat"/>
+
+		<button id="sel_team" binding="`" device="keyboard" group="interface"/>
+		<button id="sel_mem_1" binding="1" device="keyboard" group="interface"/>
+		<button id="sel_mem_2" binding="2" device="keyboard" group="interface"/>
+		<button id="sel_mem_3" binding="3" device="keyboard" group="interface"/>
+		
+		<button id="hud_select" binding="2" device="mouse" group="tactics"/>
+		<button id="hud_up" binding="mouse wheel up" device="mouse" group="misc"/>
+		<button id="hud_down" binding="mouse wheel down" device="mouse" group="misc"/>
+		<button id="take_screenshot" binding="insert" device="keyboard" group="misc_ext"/>
+		
+		<button id="sel_order_1" binding="f1" device="keyboard" group="interface"/>
+		<button id="sel_order_2" binding="f2" device="keyboard" group="interface"/>
+		<button id="sel_order_3" binding="f3" device="keyboard" group="interface"/>
+		<button id="sel_order_4" binding="f4" device="keyboard" group="interface"/>
+		<!--<button id="sel_order_5" binding="f5" device="keyboard" group="interface"/>-->
+
+		<button id="show_tactical_map" binding="tab" device="keyboard" group="interface_toggle"/>	
+		<button id="toggle_inventory" binding="i" device="keyboard" group="multiplay_toggle"/>		
+
+		<button id="execute" binding="f5" device="keyboard" group="interface"/>		
+		<button id="execute_all" binding="f6" device="keyboard" group="interface"/>		
+		
+		<button id="chat_all" binding="t" device="keyboard" group="multiplay_toggle"/>		
+		<button id="chat_team" binding="y" device="keyboard" group="multiplay_toggle"/>		
+		<button id="multi_map" binding="m" device="keyboard" group="multiplay_toggle"/>
+		<button id="chat_toggle" binding="u" device="keyboard" group="multiplay_toggle"/>	
+
+		<button id="toggle_cypher" binding="b" device="keyboard" group="interface"/>
+		<button id="toggle_xcom_fs" binding="g" device="keyboard" group="interface_toggle" />
+
+		<button id="menu" binding="esc" device="keyboard" group="misc_const" />
+	</buttons>
+</controller_setting>
